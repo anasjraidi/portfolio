@@ -509,7 +509,16 @@
     <section class="contact" id="contact">
         <h2 class="heading">Contact <span>Me</span><span class="animate scroll" style="--i:1;"></span></h2>
 
-        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html">
+        <!-- Message de succès -->
+        <div id="success-message" class="success-message" style="display: none;">
+            <div class="success-content">
+                <i class='bx bx-check-circle'></i>
+                <h3>Message envoyé avec succès !</h3>
+                <p>Merci pour votre message. Je vous répondrai dans les plus brefs délais.</p>
+            </div>
+        </div>
+
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
             <!-- Champ anti-spam caché -->
             <p style="display: none;">
                 <label>Don't fill this out if you're human: <input name="bot-field" /></label>

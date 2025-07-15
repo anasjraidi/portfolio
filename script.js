@@ -48,6 +48,34 @@ window.onscroll = () => {
     footer.classList.toggle('show-animate', this.innerHeight + this.scrollY >= document.scrollingElement.scrollHeight);
 }
 
+// Contact form handling
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form[name="contact"]');
+    const successMessage = document.getElementById('success-message');
+
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            // Let Netlify handle the form submission
+            // Show success message after a short delay
+            setTimeout(function() {
+                // Hide the form
+                form.style.display = 'none';
+                // Show success message
+                successMessage.style.display = 'block';
+                // Scroll to success message
+                successMessage.scrollIntoView({ behavior: 'smooth' });
+
+                // Reset form and show it again after 5 seconds
+                setTimeout(function() {
+                    form.reset();
+                    form.style.display = 'block';
+                    successMessage.style.display = 'none';
+                }, 5000);
+            }, 1000);
+        });
+    }
+});
+
 // Typing Animation Effect
 const typingTexts = ['Fullstack Developer', 'Creative Coder', 'Tech Enthusiast', 'Problem Solver'];
 let textIndex = 0;

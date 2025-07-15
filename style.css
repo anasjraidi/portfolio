@@ -1233,6 +1233,49 @@ span {
     cursor: pointer;
 }
 
+/* Success message styles */
+.success-message {
+    background: rgba(0, 255, 157, 0.1);
+    border: 2px solid var(--main-color);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 2rem 0;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    animation: slideDown 0.5s ease-out;
+}
+
+.success-content i {
+    font-size: 4rem;
+    color: var(--main-color);
+    margin-bottom: 1rem;
+    display: block;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.success-content h3 {
+    font-size: 2rem;
+    color: var(--main-color);
+    margin-bottom: 1rem;
+}
+
+.success-content p {
+    font-size: 1.4rem;
+    color: var(--text-color);
+    margin: 0;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .footer {
     display: flex;
     justify-content: space-between;
