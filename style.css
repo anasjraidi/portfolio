@@ -822,16 +822,44 @@ span {
 /* New Skills Scrolling Design */
 .skills-scroll-container {
     width: 100%;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
     padding: 2rem 0;
     position: relative;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scroll-behavior: smooth;
+    cursor: grab;
+    scroll-snap-type: x proximity;
+}
+
+.skills-scroll-container:active {
+    cursor: grabbing;
+}
+
+/* Hide scrollbar for WebKit browsers */
+.skills-scroll-container::-webkit-scrollbar {
+    display: none;
 }
 
 .skills-scroll-track {
     display: flex;
     gap: 3rem;
-    animation: scrollSkills 30s linear infinite;
     width: max-content;
+    padding-bottom: 1rem;
+    animation: autoScrollSkills 40s ease-in-out infinite;
+}
+
+/* Make skill cards clickable and interactive */
+.skill-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+}
+
+.skill-card:hover {
+    transform: translateY(-10px) scale(1.05);
 }
 
 .skill-card {
@@ -1001,19 +1029,27 @@ span {
     background: linear-gradient(135deg, #6C5CE7, #A29BFE);
 }
 
-/* Scrolling Animation */
-@keyframes scrollSkills {
+/* Auto scroll animation - bidirectional */
+@keyframes autoScrollSkills {
     0% {
         transform: translateX(0);
     }
-    100% {
+    50% {
         transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0);
     }
 }
 
-/* Pause animation on hover */
+/* Pause auto scroll on hover to allow manual interaction */
 .skills-scroll-container:hover .skills-scroll-track {
     animation-play-state: paused;
+}
+
+/* Smooth scrolling behavior */
+.skills-scroll-container {
+    scroll-behavior: smooth;
 }
 
 /* Responsive Skills Scroll */
@@ -1024,7 +1060,7 @@ span {
 
     .skills-scroll-track {
         gap: 2rem;
-        animation: scrollSkills 25s linear infinite;
+        animation: autoScrollSkills 35s ease-in-out infinite;
     }
 
     .skill-card {
