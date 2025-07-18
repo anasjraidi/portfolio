@@ -519,6 +519,9 @@
         </div>
 
         <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <!-- Champ caché requis pour Netlify Forms -->
+            <input type="hidden" name="form-name" value="contact" />
+
             <!-- Champ anti-spam caché -->
             <p style="display: none;">
                 <label>Don't fill this out if you're human: <input name="bot-field" /></label>
